@@ -1,6 +1,19 @@
 (function () {
     'use strict';
 
+    var plusOneForm = '<div class="plusoneguestform">\
+        <h3>+1 гость</h3>\
+        <div class="form-group">\
+            <input type="text" name="fio" class="form-control" placeholder="Фамилия Имя" required>\
+        </div>\
+        <div class="form-group">\
+            <input type="text" name="company" class="form-control" placeholder="Компания">\
+        </div>\
+        <div class="form-group">\
+            <input type="text" name="category" class="form-control" placeholder="Категория">\
+        </div>\
+    </div>';
+
     function lowercase(str) {
         return str.toLowerCase();
     }
@@ -46,6 +59,13 @@
             }
         }).bind('typeahead:select', function (ev, guest) {
             location.href = '/guest/' + guest.id;
+        });
+    }
+
+    var registerForm = $('.register');
+    if (registerForm.length) {
+        $('.plusone').bind('click', function () {
+            registerForm.prepend(plusOneForm);
         });
     }
 })();

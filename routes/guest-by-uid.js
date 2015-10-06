@@ -1,12 +1,20 @@
 'use strict';
 
+var mongodb = require('mongodb');
+
 module.exports = function (db) {
     return function (req, res, next) {
-        // find guest by id
-        // TODO
+        var guests = db.collection('guests');
 
-        // output guest page form
-        // one can add up to three +1 persons here
-        // TODO
+        guests.find({
+            _id: mongodb.ObjectID(req.params.uid)
+        }).next(function (err, guest) {
+            if (err) {
+                next(err);
+                return;
+            }
+
+            res.render('guest', {guest: guest});
+        });
     };
 };
