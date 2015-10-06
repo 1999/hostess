@@ -1,0 +1,22 @@
+{
+  "name": "hostess",
+  "version": "1.0.0",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:1999/hostess.git"
+  },
+  "dependencies": {
+    "body-parser": "1.14.1",
+    "bower": "1.5.3",
+    "express": "4.13.3",
+    "express-handlebars": "^2.0.1",
+    "mongodb": "2.0.45",
+    "multer": "1.0.6",
+    "serve-static": "1.10.0"
+  }
+}

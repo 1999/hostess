@@ -11,6 +11,34 @@
 
 ## Schema
 
-БД - sveta
-Collection - guests
-Indexes: `db.guests.createIndex({firstname: 'text', lastname: 'text'}, {default_language: 'ru'})`
+* БД - sveta
+* Collection - guests
+* Indexes:
+* * `db.guests.createIndex({register_date: 1, fio: 'text'}, {default_language: 'ru'})`
+* * `db.guests.createIndex({fio: 1})`
+* Typical document:
+```javascript
+_id: ...,
+fio: 'Иванов Иван Иваныч', // фамилия имя
+company: 'Яндекс', // необязательное поле
+category: 'whatever', // необязательное поле
+register_date: Date // если не зарегистрирован, поля нет
+```
+
+## Develop
+
+### Сэмпловые данные для MongoDB
+```javascript
+db.guests.insert([
+    {fio: 'Островский Анатолий', company: 'Яндекс'},
+    {fio: 'Сорин Дмитрий', company: 'Яндекс'},
+    {fio: 'Красуля Георгий', company: 'Яндекс'},
+    {fio: 'Довыденко Владимир', company: 'Яндекс'},
+    {fio: 'Марчук Ирина', company: 'Яндекс'},
+    {fio: 'Жуланов Вадим', company: 'Яндекс'},
+    {fio: 'Антипов Станислав', company: 'Яндекс'},
+    {fio: 'Глушко Вчеслав', company: 'Яндекс'}
+])
+```
+
+`npm start`

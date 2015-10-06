@@ -1,0 +1,16 @@
+.wrapper {
+    width: 800px;
+    margin: 24px auto;
+}
+
+.guestsearch__fio {
+    margin-top: 24px;
+}
+
+.servicelinks {
+    margin-top: 12px;
+}
+
+.stat td {
+    vertical-align: middle !important;
+}
