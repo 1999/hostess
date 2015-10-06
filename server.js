@@ -36,13 +36,12 @@ function useMiddleware(app, db) {
     var postRequestDecodeMiddleware = bodyParser.urlencoded(postRequestOptions);
     var uploadFilesDecodeMiddleware = multer({dest: os.tmpdir(), inMemory: true});
 
-    app.get('/', require('./routes/index'));
+    app.get('/', require('./routes/index')(db));
 
     app.get('/guest/:uid', require('./routes/guest-by-uid')(db));
     app.post('/guest/:uid', postRequestDecodeMiddleware, require('./routes/register-guest')(db));
 
     app.get('/stat', require('./routes/stat')(db));
-    app.get('/find', require('./routes/find')(db));
 
     app.get('/upload', require('./routes/upload-form'));
     app.post('/upload', postRequestDecodeMiddleware, uploadFilesDecodeMiddleware.single('excel'), require('./routes/upload-processor')(db));

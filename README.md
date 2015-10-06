@@ -13,9 +13,6 @@
 
 * БД - sveta
 * Collection - guests
-* Indexes:
-* * `db.guests.createIndex({register_date: 1, fio: 'text'}, {default_language: 'ru'})`
-* * `db.guests.createIndex({fio: 1})`
 * Typical document:
 ```javascript
 _id: ...,
@@ -29,6 +26,10 @@ register_date: Date // если не зарегистрирован, поля н
 
 ### Сэмпловые данные для MongoDB
 ```javascript
+db.guests.drop();
+db.guests.createIndex({register_date: 1, fio: 1}); // для поиска по ФИО
+db.guests.createIndex({fio: 1}); // для вывода статистики
+
 db.guests.insert([
     {fio: 'Островский Анатолий', company: 'Яндекс'},
     {fio: 'Сорин Дмитрий', company: 'Яндекс'},
@@ -38,7 +39,7 @@ db.guests.insert([
     {fio: 'Жуланов Вадим', company: 'Яндекс'},
     {fio: 'Антипов Станислав', company: 'Яндекс'},
     {fio: 'Глушко Вчеслав', company: 'Яндекс'}
-])
+]);
 ```
 
 `npm start`
