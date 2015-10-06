@@ -12,6 +12,7 @@ module.exports = function (db) {
 
             docs = docs.map(function (doc) {
                 return {
+                    id: doc._id,
                     fio: doc.fio,
                     registered: Boolean(doc.register_date)
                 };

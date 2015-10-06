@@ -19,11 +19,10 @@
                 });
 
                 if (hasSubstring) {
-                    matches.push(guest.fio);
+                    matches.push(guest);
                 }
             });
 
-            console.log(matches.length);
             cb(matches);
         };
     }
@@ -38,10 +37,15 @@
             minLength: 1
         }, {
             source: substringMatcher(guests),
+            display: function (guest) {
+                return guest.fio;
+            },
             templates: {
-                empty: 'Гостя с таким ФИО нет',
+                empty: '&nbsp;&nbsp;Гостя с таким ФИО нет',
                 // suggestion: Handlebars.compile('<div><strong>{{value}}</strong> – {{year}}</div>')
             }
+        }).bind('typeahead:select', function (ev, guest) {
+            location.href = '/guest/' + guest.id;
         });
     }
 })();
