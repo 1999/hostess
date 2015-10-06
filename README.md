@@ -24,22 +24,9 @@ register_date: Date // если не зарегистрирован, поля н
 
 ## Develop
 
-### Сэмпловые данные для MongoDB
+### Импорт данных для БД
 ```javascript
-db.guests.drop();
-db.guests.createIndex({register_date: 1, fio: 1}); // для поиска по ФИО
-db.guests.createIndex({fio: 1}); // для вывода статистики
-
-db.guests.insert([
-    {fio: 'Островский Анатолий', company: 'Яндекс'},
-    {fio: 'Сорин Дмитрий', company: 'Яндекс'},
-    {fio: 'Красуля Георгий', company: 'Яндекс'},
-    {fio: 'Довыденко Владимир', company: 'Яндекс'},
-    {fio: 'Марчук Ирина', company: 'Яндекс'},
-    {fio: 'Жуланов Вадим', company: 'Яндекс'},
-    {fio: 'Антипов Станислав', company: 'Яндекс'},
-    {fio: 'Глушко Вчеслав', company: 'Яндекс'}
-]);
+npm run-script init-db
 ```
 
 `npm start`
