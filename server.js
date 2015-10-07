@@ -62,7 +62,7 @@ mongodb.MongoClient.connect('mongodb://localhost:27017/sveta', function (err, db
     configure(app);
     useMiddleware(app, db);
 
-    app.listen(3000).on('close', function () {
+    app.listen(3001).on('close', function () {
         console.log('Server is closing...');
         db.close();
     });
