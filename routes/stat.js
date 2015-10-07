@@ -10,7 +10,18 @@ module.exports = function (db) {
                 return;
             }
 
-            res.render('stat', {guests: docs});
+            var totalRegistered = docs.reduce(function (totalRegistered, guest) {
+                if (guest.register_date) {
+                    totalRegistered += 1;
+                }
+
+                return totalRegistered;
+            }, 0);
+
+            res.render('stat', {
+                guests: docs,
+                totalRegistered: totalRegistered
+            });
         });
     };
 };

@@ -51,7 +51,9 @@
         }, {
             source: substringMatcher(guests),
             display: function (guest) {
-                return guest.fio;
+                return guest.registered
+                    ? guest.fio + ' (зарегистрирован)'
+                    : guest.fio;
             },
             templates: {
                 empty: '&nbsp;&nbsp;Гостя с таким ФИО нет',
