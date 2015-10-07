@@ -6,18 +6,15 @@ module.exports = function (db) {
     return function (req, res, next) {
         var guests = db.collection('guests');
 
-        guests.insertOne({
-            fio: req.body.fio,
-            company: req.body.company,
-            category: req.body.category,
-            register_date: new Date
-        }, function (err, r) {
+        guests.find({
+            _id: mongodb.ObjectID(req.params.uid)
+        }).next(function (err, guest) {
             if (err) {
                 next(err);
                 return;
             }
 
-            res.redirect('/registered/' + r.insertedId);
+            res.render('registered', {guest: guest});
         });
     };
 };

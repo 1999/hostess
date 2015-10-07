@@ -49,7 +49,7 @@ module.exports = function (db) {
                     return;
                 }
 
-                res.redirect('/stat');
+                res.redirect('/registered/' + req.params.uid);
             });
         });
     };

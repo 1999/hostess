@@ -40,6 +40,7 @@ function useMiddleware(app, db) {
 
     app.get('/guest/:uid', require('./routes/guest-by-uid')(db));
     app.post('/guest/:uid', postRequestDecodeMiddleware, require('./routes/register-guest')(db));
+    app.get('/registered/:uid', require('./routes/registered-by-uid')(db));
 
     app.get('/stat', require('./routes/stat')(db));
 
