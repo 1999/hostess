@@ -28,32 +28,19 @@ function getAllGuests (callback) {
 
         allPersons = persons.map(function (person) {
             return {
-                company: 'Яндекс',
-                fio: person[1],
-                email: person[2],
-                city: person[3],
-                plusone: person[4]
+                fio: escape(person[0] + ' ' + person[1]),
+                company: escape(person[2]),
+                about: escape(person[3])
             };
+            //return {
+                //company: 'Яндекс',
+                //fio: person[1],
+                //email: person[2],
+                //city: person[3],
+                //plusone: person[4]
+            //};
         });
-
-        getList(1, function (err, persons) {
-            if (err) {
-                return callback(err);
-            }
-
-            allPersons = allPersons.concat(persons.map(function (person) {
-                return {
-                    company: person[0],
-                    fio: person[1],
-                    position: person[2],
-                    email: person[3],
-                    phone: person[4],
-                    comment: person[5],
-                    plusone: person[6]
-                };
-            }));
-            callback(null, allPersons);
-        });
+        callback(null, allPersons);
     });
 }
 
@@ -73,6 +60,7 @@ getAllGuests(function (err, guests) {
                 throw handleErr(err);
             }
 
+            guestsCollection.remove();
             guestsCollection.drop(function (err) {
                 if (err) {
                     throw handleErr(err);
