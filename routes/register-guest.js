@@ -5,10 +5,11 @@ var mongodb = require('mongodb');
 module.exports = function (db) {
     return function (req, res, next) {
         var guests = db.collection('guests');
+        var id = mongodb.ObjectID(req.params.uid);
         var bulkOps = [];
 
         guests.find({
-            _id: mongodb.ObjectID(req.params.uid)
+            _id: id
         }).next(function (err, guest) {
             if (err) {
                 next(err);
@@ -34,6 +35,7 @@ module.exports = function (db) {
                         insertOne: {
                             'document': {
                                 fio: fio,
+                                primary: id,
                                 company: req.body.company[index],
                                 category: req.body.category[index],
                                 register_date: new Date
