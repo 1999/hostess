@@ -4,15 +4,17 @@
     <thead>
         <tr>
             <th>Фамилия Имя</th>
+            <th>Кто привёл</th>
             <th>Компания</th>
             <th>Категория</th>
             <th>Регистрация</th>
         </tr>
     </thead>
     <tbody>
-        {{#each guests}}
+        {{#each docs}}
         <tr id="{{_id}}">
             <td>{{{fio}}}</td>
+            <td>{{{primary}}}</td>
             <td>{{{company}}}</td>
             <td>{{{category}}}</td>
             <td>

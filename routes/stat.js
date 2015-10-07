@@ -4,22 +4,34 @@ module.exports = function (db) {
     return function (req, res, next) {
         var guests = db.collection('guests');
 
-        guests.find().sort({fio: 1}).toArray(function (err, docs) {
+        guests.find().sort({primary: 1, fio: 1}).toArray(function (err, docs) {
             if (err) {
                 next(err);
                 return;
             }
 
-            var totalRegistered = docs.reduce(function (totalRegistered, guest) {
+            var totalRegistered = 0;
+            var guests = {};
+
+            docs.forEach(function (guest) {
                 if (guest.register_date) {
                     totalRegistered += 1;
                 }
 
-                return totalRegistered;
-            }, 0);
+                if (guest.primary) {
+                    guest.primary = guests[guest.primary].fio;
+                }
+
+                guests[guest._id] = guest;
+            });
+
+            docs.sort(function (a, b) {
+                return a.fio.localeCompare(b.fio);
+            });
 
             res.render('stat', {
-                guests: docs,
+                docs: docs,
+                guests: guests,
                 totalRegistered: totalRegistered
             });
         });
