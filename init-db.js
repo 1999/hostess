@@ -30,16 +30,10 @@ function getAllGuests (callback) {
             return {
                 fio: escape(person[0] + ' ' + person[1]),
                 company: escape(person[2]),
-                about: escape(person[3])
+                category: escape(person[3])
             };
-            //return {
-                //company: 'Яндекс',
-                //fio: person[1],
-                //email: person[2],
-                //city: person[3],
-                //plusone: person[4]
-            //};
         });
+        console.log('allPersons', allPersons.length);
         callback(null, allPersons);
     });
 }
