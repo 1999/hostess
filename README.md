@@ -1,5 +1,7 @@
 # hostess
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/1999/hostess.svg)](https://greenkeeper.io/)
+
 ## URLs
 
 * `/` - поле для ввода имени и фамилии
