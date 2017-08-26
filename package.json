@@ -11,15 +11,15 @@
     "url": "git@github.com:1999/hostess.git"
   },
   "dependencies": {
-    "body-parser": "1.14.1",
-    "bower": "1.5.3",
+    "body-parser": "1.17.2",
+    "bower": "1.8.0",
     "escape-html": "^1.0.3",
-    "express": "4.13.3",
-    "express-handlebars": "^2.0.1",
-    "lodash": "^3.10.1",
-    "mongodb": "2.0.45",
-    "multer": "1.0.6",
-    "node-xlsx": "^0.6.0",
-    "serve-static": "1.10.0"
+    "express": "4.15.4",
+    "express-handlebars": "^3.0.0",
+    "lodash": "^4.17.4",
+    "mongodb": "2.2.31",
+    "multer": "1.3.0",
+    "node-xlsx": "^0.10.0",
+    "serve-static": "1.12.4"
   }
 }
